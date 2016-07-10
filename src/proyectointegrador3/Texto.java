@@ -17,6 +17,7 @@ public class Texto {
     ArrayList<Caracter> caracteres= new ArrayList<>();
     Caracter caracter;
     ListaSimple lista= new ListaSimple();
+    ListaCar listaCar = new ListaCar();
     ColaListaSimple colaCaracteres = new ColaListaSimple();
     ColaListaSimple colaNodoCaracteres = new ColaListaSimple();
     ArbolBB arbol;
@@ -62,6 +63,7 @@ public class Texto {
         for(int i=0; i<caracteres.size(); i++)
         {
             lista.insertaOrdenado(caracteres.get(i));
+            listaCar.insertaOrdenado(new NodoCar((Caracter)caracteres.get(i)));
         }
         
         while(!lista.vacio())
@@ -71,13 +73,18 @@ public class Texto {
         lista.imprimir();
     }
     
+    public void arbolize(){
+        listaCar.superbolize();
+    }
+    
     public void crearNodos(){
+        int comparador=0;
         Caracter aux, aux2;
         while(!colaCaracteres.isEmpty()){
             aux = (Caracter)colaCaracteres.dequeue();
             aux2 = (Caracter)colaCaracteres.dequeue();
-            colaNodoCaracteres.enqueue(new NodoBin((aux.getFrecuencias()+aux2.getFrecuencias())
-                    ,new NodoBin(aux),new NodoBin(aux2)));
+            comparador = aux.getFrecuencias()+aux2.getFrecuencias();
+            colaNodoCaracteres.enqueue(new NodoBin(comparador, new NodoBin(aux), new NodoBin(aux2)));
             if(colaCaracteres.size()<2)
                 break;
         }
@@ -116,7 +123,7 @@ public class Texto {
         t.eliminarRepeticiones();
         t.impresionPrueba();
         t.crearLista();
-        t.crearNodos();
+        t.arbolize();
         
         
     }
