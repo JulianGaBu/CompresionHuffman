@@ -17,6 +17,9 @@ public class Texto {
     ArrayList<Caracter> caracteres= new ArrayList<>();
     Caracter caracter;
     ListaSimple lista= new ListaSimple();
+    ColaListaSimple colaCaracteres = new ColaListaSimple();
+    ColaListaSimple colaNodoCaracteres = new ColaListaSimple();
+    ArbolBB arbol;
     
     public void contarCaracteres()
     {
@@ -60,9 +63,51 @@ public class Texto {
         {
             lista.insertaOrdenado(caracteres.get(i));
         }
+        
+        while(!lista.vacio())
+            colaCaracteres.enqueue((Caracter)((Nodo)lista.eliminaInicio()).getDato());
+        
         System.out.println("");
         lista.imprimir();
     }
+    
+    public void crearNodos(){
+        Caracter aux, aux2;
+        while(!colaCaracteres.isEmpty()){
+            aux = (Caracter)colaCaracteres.dequeue();
+            aux2 = (Caracter)colaCaracteres.dequeue();
+            colaNodoCaracteres.enqueue(new NodoBin((aux.getFrecuencias()+aux2.getFrecuencias())
+                    ,new NodoBin(aux),new NodoBin(aux2)));
+            if(colaCaracteres.size()<2)
+                break;
+        }
+        treeGen();
+    }
+    
+    public void treeGen(){
+        if(colaNodoCaracteres.size()>1)
+            treeGenerator(colaNodoCaracteres);
+    }
+    
+    public void treeGenerator(ColaListaSimple cola){
+        ColaListaSimple colaNodoBin = new ColaListaSimple();
+        NodoBin aux, aux2;
+        while(!cola.isEmpty()){
+            aux = (NodoBin)cola.dequeue();
+            aux2 = (NodoBin)cola.dequeue();
+            colaNodoBin.enqueue(new NodoBin(((int)aux.getDato()+(int)aux2.getDato()),aux,aux2));
+            if(cola.size()<2)
+                break;
+        }
+        if(colaNodoBin.size()>1)
+            treeGenerator(colaNodoBin);
+        else
+            arbol = new ArbolBB(colaNodoBin.dequeue());
+    }
+    
+    
+    
+    
 
      public static void main(String[] args) {
         
@@ -71,6 +116,7 @@ public class Texto {
         t.eliminarRepeticiones();
         t.impresionPrueba();
         t.crearLista();
+        t.crearNodos();
         
         
     }
