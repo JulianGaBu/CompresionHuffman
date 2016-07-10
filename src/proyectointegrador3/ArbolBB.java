@@ -10,16 +10,20 @@ package proyectointegrador3;
  *
  * @author Julian
  */
-public class ArbolBB2 {
+public class ArbolBB {
 
     protected NodoBin raiz;
 
-    public ArbolBB2(NodoBin raiz) {
+    public ArbolBB(NodoBin raiz) {
         this.raiz = raiz;
     }
 
-    public ArbolBB2(Object o) {
+    public ArbolBB(Object o) {
         raiz = new NodoBin(o);
+    }
+    
+    public ArbolBB(int valor){
+        raiz = new NodoBin(valor);
     }
 
     public void inOrden() {
@@ -193,80 +197,4 @@ public class ArbolBB2 {
 
         return menor;
     }
-
-    public static void main(String[] args) {
-
-//        ArbolBB arbol= new ArbolBB(12);
-//        arbol.insertar(4);
-//        arbol.insertar(23);
-//        arbol.insertar(2);
-//        arbol.insertar(10);
-//        arbol.insertar(15);
-//        arbol.insertar(37);
-//        arbol.insertar(9); 
-//        arbol.insertar(21);
-//        arbol.insertar(32);
-//        arbol.insertar(69);
-//        arbol.insertar(6);
-//       
-//          ArbolBB arbol= new ArbolBB(62);
-//          arbol.insertar(13);
-//          arbol.insertar(72);
-//          arbol.insertar(13);
-//          arbol.insertar(6);
-//          arbol.insertar(65);
-//          arbol.insertar(76);
-//          arbol.insertar(4);
-//          arbol.insertar(8);
-//          arbol.preOrden();
-//          //Ssytem.out.println(arbol.buscar(65));
-//          arbol.eliminar(72);
-//          System.out.println("");
-//          arbol.preOrden();
-//          
-//            ArbolBB arbol= new ArbolBB(50);
-//            arbol.insertar(94);
-//            arbol.insertar(97);
-//            arbol.insertar(54);
-//            arbol.insertar(31);
-//            arbol.insertar(91);
-//            arbol.insertar(69);
-//            arbol.insertar(90);
-//            arbol.insertar(85);
-//            arbol.insertar(68);
-//            arbol.insertar(92);
-//            arbol.insertar(20);
-//            arbol.insertar(15);
-//            arbol.insertar(44);
-//            arbol.insertar(96);
-//            arbol.insertar(66);
-//            arbol.insertar(55);
-//            arbol.insertar(65);
-//            arbol.insertar(36);
-//            arbol.insertar(63);
-//           // arbol.preOrden();
-//            arbol.eliminar(50);
-//            arbol.preOrden();
-
-//this is a new funny comment :)
-//test
-        ArbolBB2 arbol = new ArbolBB2(15);
-        arbol.insertar(11);
-        arbol.insertar(21);
-        arbol.insertar(9);
-        arbol.insertar(10);
-        arbol.insertar(6);
-        arbol.insertar(16);
-        arbol.insertar(19);
-        arbol.insertar(23);
-        arbol.insertar(22);
-        arbol.insertar(18);
-        arbol.insertar(20);
-        arbol.insertar(24);
-        arbol.insertar(25);
-        arbol.insertar(26);
-        arbol.eliminar(15);
-        arbol.preOrden();
-    }
-
 }
