@@ -70,47 +70,6 @@ public class Texto {
         listaCar.superbolize();
     }
 
-    public void crearNodos() {
-        int comparador = 0;
-        Caracter aux, aux2;
-        while (!colaCaracteres.isEmpty()) {
-            aux = (Caracter) colaCaracteres.dequeue();
-            aux2 = (Caracter) colaCaracteres.dequeue();
-            comparador = aux.getFrecuencias() + aux2.getFrecuencias();
-            colaNodoCaracteres.enqueue(new NodoBin(comparador, new NodoBin(aux), new NodoBin(aux2)));
-            if (colaCaracteres.size() < 2) {
-                colaNodoCaracteres.enqueue(new NodoBin((Caracter)colaCaracteres.dequeue()));
-                System.out.println("help");
-                break;
-            }
-        }
-        treeGen();
-    }
-
-    public void treeGen() {
-        if (colaNodoCaracteres.size() > 1) {
-            treeGenerator(colaNodoCaracteres);
-        }
-    }
-
-    public void treeGenerator(ColaListaSimple cola) {
-        ColaListaSimple colaNodoBin = new ColaListaSimple();
-        NodoBin aux, aux2;
-        while (!cola.isEmpty()) {
-            aux = (NodoBin) cola.dequeue();
-            aux2 = (NodoBin) cola.dequeue();
-            colaNodoBin.enqueue(new NodoBin(((int) aux.getDato() + (int) aux2.getDato()), aux, aux2));
-            if (cola.size() < 2) {
-                break;
-            }
-        }
-        if (colaNodoBin.size() > 1) {
-            treeGenerator(colaNodoBin);
-        } else {
-            arbol = new ArbolBB(colaNodoBin.dequeue());
-        }
-    }
-
     public void bfs() {
         listaCar.bfs(listaCar.inicio);
     }

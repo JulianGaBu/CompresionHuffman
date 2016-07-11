@@ -42,7 +42,11 @@ public class NodoCar {
     }
     
     public void preOrden() {
-        System.out.println(freq);
+        
+        if(this.caracter!=null){
+            System.out.println("Freq: "+freq+ " caracter: "+caracter.getCaracter());
+        }else
+            System.out.println(freq + "/NA");
         if (izquierda != null) {
             izquierda.preOrden();
         }
