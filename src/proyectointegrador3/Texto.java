@@ -17,11 +17,8 @@ public class Texto {
     ArrayList<Caracter> caracteres = new ArrayList<>();
     String text = "the essential feature";
     Caracter caracter;
-    ListaSimple lista = new ListaSimple();
     ListaCar listaCar = new ListaCar();
     ColaListaSimple colaCaracteres = new ColaListaSimple();
-    ColaListaSimple colaNodoCaracteres = new ColaListaSimple();
-    ArbolBB arbol;
 
     public void contarCaracteres() {
         for (int i = 0; i < text.length(); i++) {
@@ -54,16 +51,9 @@ public class Texto {
 
     public void crearLista() {
         for (int i = 0; i < caracteres.size(); i++) {
-            lista.insertaOrdenado(caracteres.get(i));
             listaCar.insertaOrdenado(new NodoCar((Caracter) caracteres.get(i)));
         }
-
-        while (!lista.vacio()) {
-            colaCaracteres.enqueue((Caracter) ((Nodo) lista.eliminaInicio()).getDato());
-        }
-
-        System.out.println("help");
-        lista.imprimir();
+        arbolize();
     }
 
     public void arbolize() {
@@ -81,10 +71,8 @@ public class Texto {
         t.eliminarRepeticiones();
         t.impresionPrueba();
         t.crearLista();
-        t.arbolize();
         System.out.println("lol");
-        t.listaCar.preorden();
-//        t.bfs();
+        t.bfs();
 
     }
 }

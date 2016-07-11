@@ -14,71 +14,86 @@ public class ListaCar {
     protected NodoCar inicio;
     protected NodoCar ultimo;
     protected int size;
+    protected ArbolCaracter arbol;
 
     public ListaCar() {
+        
     }
 
     public boolean vacio() {
         return inicio == null;
     }
 
+    //busqueda por anchura
     public void bfs(NodoCar node) {
+        int power =0;
+        String binario="";
+        ColaListaSimple str = new ColaListaSimple();
         ColaListaSimple cola = new ColaListaSimple();
         if (node == null) {
             return;
         }
         cola.enqueue(node);
+        str.enqueue(binario);
         while (!cola.isEmpty()) {
-            NodoCar nodo = (NodoCar) cola.dequeue();
-            System.out.print(nodo.getFreq() + " ");
-            if (nodo.getIzquierda() != null) {
-                cola.enqueue(nodo.getIzquierda());
+            NodoCar nodo = (NodoCar)cola.dequeue();
+            binario = (String)str.dequeue();
+            System.out.print(nodo.getFreq());
+            if (nodo.caracter != null)
+                System.out.print("("+nodo.caracter.getCaracter()+"_"+binario+"_) ");
+            else
+                System.out.print("_");
+            if (nodo.izquierda != null) {
+                binario = binario+"0";
+                cola.enqueue(nodo.izquierda);
+                str.enqueue(binario);
             }
-            if (nodo.getDerecha() != null) {
-                cola.enqueue(nodo.getIzquierda());
+            if (nodo.derecha != null) {
+                binario = binario+"1";
+                cola.enqueue(nodo.derecha);
+                str.enqueue(binario);
             }
+            power++;
+            
         }
     }
-
+    
+    //inicializa la generacion de arboles y la codificacion de huffman
     public void superbolize() {
-        System.out.println("probando");
         int cont = 0;
-        System.out.println("best" + this.size);
+        
+        //generando arbol desde nodos
         while (this.size > 1) {
             arbolize();
             cont++;
         }
-        System.out.println("Size:"+this.size);
         
+        //transferencia de nodo(s) a arbol
+        arbol = new ArbolCaracter(inicio);
         System.out.println(cont);
         System.out.println("Arbol generado");
         System.out.println(inicio.getFreq() + " es la frecuencia total sumada");
+        
+        //codificacion de huffman
+        arbol.codificar();
     }
-
+    
+    //generacion de arbol desde nodo
     public void arbolize() {
         NodoCar smallest, smaller, ncAux;
         int aux;
         smallest = new NodoCar(inicio);
         smaller = new NodoCar(inicio.siguiente);
         aux = smallest.getFreq() + smaller.getFreq();
-        System.out.println("Aux: "+aux+" sest: "+smallest.getFreq()+" ser: "+smaller.getFreq());
         this.eliminaInicio();
         this.eliminaInicio();
         ncAux = new NodoCar(aux, smallest, smaller);
-        System.out.println("Suma: "+aux+" N1: "+smallest.getFreq()+" N2: "+smaller.getFreq());
-        System.out.println("OPSuma: "+ncAux.getFreq()+" N1: "+ncAux.izquierda.getFreq()+" N2: "+ncAux.derecha.getFreq());
-
-        
-
-//        smallest.setPadre(ncAux);
-//        smaller.setPadre(ncAux);
-
+        smallest.setPadre(ncAux);
+        smaller.setPadre(ncAux);
         insertaOrdenado(ncAux);
-        //System.out.println("HELPSuma: "+inicio.getFreq()+" N1: "+inicio.izquierda.getFreq()+" N2: "+inicio.derecha.getFreq());
     }
 
     public void insertaInicio(NodoCar dato) {
-
         if (vacio()) {
             inicio = ultimo = new NodoCar(dato);
             size++;
@@ -86,15 +101,9 @@ public class ListaCar {
             inicio = new NodoCar(dato, inicio);
             size++;
         }
-
-    }
-
-    public void preorden() {
-        inicio.preOrden();
     }
 
     public void insertaOrdenado(NodoCar dato) {
-
         if (vacio()) {
             inicio = ultimo = new NodoCar(dato);
             size++;
@@ -129,7 +138,6 @@ public class ListaCar {
     }
 
     public void insertaFinal(NodoCar dato) {
-
         if (vacio()) {
             inicio = ultimo = new NodoCar(dato);
             size++;
@@ -139,11 +147,9 @@ public class ListaCar {
             ultimo = temp;
             size++;
         }
-
     }
 
     public NodoCar eliminaInicio() {
-
         NodoCar eliminado = null;
         if (vacio()) {
             System.out.println("Lista vacia");
@@ -152,50 +158,6 @@ public class ListaCar {
             inicio = inicio.siguiente;
             size--;
         }
-
-        return eliminado;
-
-    }
-
-    public NodoCar eliminaFinal() {
-
-        NodoCar eliminado = null;
-        NodoCar anterior = null;
-        NodoCar actual = inicio;
-
-        if (vacio()) {
-            System.out.println("La lista esta vacia");
-        } else if (actual.siguiente == null) {
-            eliminado = inicio;
-            inicio = null;
-            size--;
-
-        } else {
-            while (actual.siguiente != null) {
-                anterior = actual;
-                actual = actual.siguiente;
-            }
-            eliminado = anterior.getSiguiente();
-            anterior.setSiguiente(null);
-            size--;
-        }
         return eliminado;
     }
-
-    public NodoCar getInicio() {
-        return inicio;
-    }
-
-    public NodoCar getUltimo() {
-        return ultimo;
-    }
-
-    public void setInicio(NodoCar inicio) {
-        this.inicio = inicio;
-    }
-
-    public void setUltimo(NodoCar ultimo) {
-        this.ultimo = ultimo;
-    }
-
 }
