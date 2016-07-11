@@ -10,6 +10,8 @@ package proyectointegrador3;
  * @author Julian
  */
 public class NodoCar {
+    
+    
 
     
     protected int freq;
@@ -22,13 +24,32 @@ public class NodoCar {
     public NodoCar(){
     }
     public NodoCar(NodoCar nc){
-        this.equals(nc);
-        this.freq = nc.getFreq();
+        this.siguiente = nc.siguiente;
+        this.izquierda = nc.izquierda;
+        this.derecha = nc.derecha;
+        this.padre = nc.padre;
+        this.caracter = nc.caracter;
+        this.freq = nc.freq;
     }
+    
     public NodoCar(NodoCar nc, NodoCar siguiente){
-        this.equals(nc);
-        this.freq = nc.getFreq();
+        this.izquierda = nc.izquierda;
+        this.derecha = nc.derecha;
+        this.padre = nc.padre;
+        this.caracter = nc.caracter;
+        this.freq = nc.freq;
         this.siguiente = siguiente;
+    }
+    
+    public void preOrden() {
+        
+        if (izquierda != null) {
+            izquierda.preOrden();
+        }
+        System.out.println(freq);
+        if (derecha != null) {
+            derecha.preOrden();
+        }
     }
     
 //Constructores de Lista Simple
@@ -73,6 +94,7 @@ public class NodoCar {
             this.derecha = derecha;
             this.padre = padre;
         }
+        
         //freq, izquierda, derecha
         public NodoCar(int freq, NodoCar izquierda, NodoCar derecha) {
             this.freq = freq;
