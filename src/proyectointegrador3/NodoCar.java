@@ -42,11 +42,10 @@ public class NodoCar {
     }
     
     public void preOrden() {
-        
+        System.out.println(freq);
         if (izquierda != null) {
             izquierda.preOrden();
         }
-        System.out.println(freq);
         if (derecha != null) {
             derecha.preOrden();
         }

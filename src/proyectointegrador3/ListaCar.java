@@ -58,19 +58,23 @@ public class ListaCar {
     public void arbolize() {
         NodoCar smallest, smaller, ncAux;
         int aux;
-        smallest = inicio;
-        smaller = inicio.getSiguiente();
+        smallest = new NodoCar(inicio);
+        smaller = new NodoCar(inicio.siguiente);
         aux = smallest.getFreq() + smaller.getFreq();
-        System.out.println("freq: "+aux);
-        ncAux = new NodoCar(aux, smallest, smallest);
-
+        System.out.println("Aux: "+aux+" sest: "+smallest.getFreq()+" ser: "+smaller.getFreq());
         this.eliminaInicio();
         this.eliminaInicio();
+        ncAux = new NodoCar(aux, smallest, smaller);
+        System.out.println("Suma: "+aux+" N1: "+smallest.getFreq()+" N2: "+smaller.getFreq());
+        System.out.println("OPSuma: "+ncAux.getFreq()+" N1: "+ncAux.izquierda.getFreq()+" N2: "+ncAux.derecha.getFreq());
 
-        smallest.setPadre(ncAux);
-        smaller.setPadre(ncAux);
+        
+
+//        smallest.setPadre(ncAux);
+//        smaller.setPadre(ncAux);
 
         insertaOrdenado(ncAux);
+        //System.out.println("HELPSuma: "+inicio.getFreq()+" N1: "+inicio.izquierda.getFreq()+" N2: "+inicio.derecha.getFreq());
     }
 
     public void insertaInicio(NodoCar dato) {
