@@ -17,45 +17,10 @@ public class ListaCar {
     protected ArbolCaracter arbol;
 
     public ListaCar() {
-        
     }
 
     public boolean vacio() {
         return inicio == null;
-    }
-
-    //busqueda por anchura
-    public void bfs(NodoCar node) {
-        int power =0;
-        String binario="";
-        ColaListaSimple str = new ColaListaSimple();
-        ColaListaSimple cola = new ColaListaSimple();
-        if (node == null) {
-            return;
-        }
-        cola.enqueue(node);
-        str.enqueue(binario);
-        while (!cola.isEmpty()) {
-            NodoCar nodo = (NodoCar)cola.dequeue();
-            binario = (String)str.dequeue();
-            System.out.print(nodo.getFreq());
-            if (nodo.caracter != null)
-                System.out.print("("+nodo.caracter.getCaracter()+"_"+binario+"_) ");
-            else
-                System.out.print("_");
-            if (nodo.izquierda != null) {
-                binario = binario+"0";
-                cola.enqueue(nodo.izquierda);
-                str.enqueue(binario);
-            }
-            if (nodo.derecha != null) {
-                binario = binario+"1";
-                cola.enqueue(nodo.derecha);
-                str.enqueue(binario);
-            }
-            power++;
-            
-        }
     }
     
     //inicializa la generacion de arboles y la codificacion de huffman
@@ -70,7 +35,7 @@ public class ListaCar {
         
         //transferencia de nodo(s) a arbol
         arbol = new ArbolCaracter(inicio);
-        System.out.println(cont);
+//        System.out.println(cont); //NODOS
         System.out.println("Arbol generado");
         System.out.println(inicio.getFreq() + " es la frecuencia total sumada");
         Texto texto= new Texto();
@@ -89,8 +54,6 @@ public class ListaCar {
         this.eliminaInicio();
         this.eliminaInicio();
         ncAux = new NodoCar(aux, smallest, smaller);
-        smallest.setPadre(ncAux);
-        smaller.setPadre(ncAux);
         insertaOrdenado(ncAux);
     }
 
@@ -110,10 +73,8 @@ public class ListaCar {
             size++;
         } else if (inicio == ultimo) {
             if (dato.getFreq() < inicio.getFreq()) {
-                System.out.println(dato.getFreq() + " <-In(Dato) " + inicio.getFreq());
                 insertaInicio(dato);
             } else {
-                System.out.println(inicio.getFreq() + " <-In " + dato.getFreq());
                 insertaFinal(dato);
             }
         } else {
@@ -124,13 +85,10 @@ public class ListaCar {
                 actual = actual.siguiente;
             }
             if (antes == null) {
-                System.out.println("null " + dato.getFreq() + " " + actual.getFreq());
                 insertaInicio(dato);
             } else if (actual == null) {
-                System.out.println(antes.getFreq() + " " + dato.getFreq() + " null");
                 insertaFinal(dato);
             } else {
-                System.out.println(antes.getFreq() + " " + dato.getFreq() + " " + actual.getFreq());
                 NodoCar nuevo = new NodoCar(dato, actual);
                 antes.setSiguiente(nuevo);
                 size++;

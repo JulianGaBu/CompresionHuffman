@@ -13,7 +13,7 @@ public class NodoCar {
 
     protected int freq;
     protected NodoCar siguiente;
-    protected NodoCar izquierda, derecha, padre;
+    protected NodoCar izquierda, derecha;
     protected Caracter caracter;
 
     public NodoCar() {
@@ -25,7 +25,6 @@ public class NodoCar {
         this.siguiente = nc.siguiente;
         this.izquierda = nc.izquierda;
         this.derecha = nc.derecha;
-        this.padre = nc.padre;
         this.caracter = nc.caracter;
         this.freq = nc.freq;
     }
@@ -33,7 +32,6 @@ public class NodoCar {
     public NodoCar(NodoCar nc, NodoCar siguiente) {
         this.izquierda = nc.izquierda;
         this.derecha = nc.derecha;
-        this.padre = nc.padre;
         this.caracter = nc.caracter;
         this.freq = nc.freq;
         this.siguiente = siguiente;
@@ -84,13 +82,5 @@ public class NodoCar {
 
     public void setDerecha(NodoCar derecha) {
         this.derecha = derecha;
-    }
-
-    public NodoCar getPadre() {
-        return padre;
-    }
-
-    public void setPadre(NodoCar padre) {
-        this.padre = padre;
     }
 }

@@ -28,21 +28,17 @@ public class Convert {
                 subcadena = sText.substring(nIter, sText.length());
                 int restan = 8 - subcadena.length();
                 for (int k = 0; k < restan; k++) {
-
                 }
                 subcadena += "0"; //completar ceros faltantes
             }
-            System.out.println(subcadena);
+            //System.out.println(subcadena);
 //Convert ascii to Int
             Byte decimal = (byte) Integer.parseInt(subcadena, 2);
-            System.out.println(decimal); //se imprime con el signo, no importa
+            //System.out.println(decimal); //se imprime con el signo, no importa
             bText[cuenta++] = decimal;
             //guardar el valor de la variable decimal en el archivo
             nIter += 8;
         } while (nIter < sText.length());
-
-        System.out.println();
-
     }
 //lee el arreglo decimal y lo convierte a string (como secuencia de bits)
 
@@ -50,10 +46,8 @@ public class Convert {
         String resultado = "";
         String aCadenaBinario = "";
         String subcadena = "";
-        for (int i = 0; i < bText.length; i++) {
-            System.out.println(bText[i] + " byte");
-            aCadenaBinario = Integer.toBinaryString((int) bText[i]);
-            System.out.println("Longitud:" + aCadenaBinario.length());
+        for (Byte bText1 : bText) {
+            aCadenaBinario = Integer.toBinaryString((int) bText1);
             if (aCadenaBinario.length() == 32) {
                 //copiar ultimo octeto del int (4 bytes), por el signo negativo al inicio
                 subcadena = aCadenaBinario.substring(aCadenaBinario.length() - 8, aCadenaBinario.length());
