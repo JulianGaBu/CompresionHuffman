@@ -1,4 +1,4 @@
-package proyectointegrador3;
+package Controlador;
 
 public class Convert {
 

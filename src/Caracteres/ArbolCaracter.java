@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectointegrador3;
+package Caracteres;
+
+import Listas.ColaListaSimple;
 
 /**
  *
@@ -47,6 +49,10 @@ public class ArbolCaracter {
             }
             recorrerArbol(nodo.derecha, codigo+"1");
         }
+    }
+    
+    public ColaListaSimple getColaCaracteres(){
+        return listArbol;
     }
     
     
