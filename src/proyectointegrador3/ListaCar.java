@@ -73,9 +73,10 @@ public class ListaCar {
         System.out.println(cont);
         System.out.println("Arbol generado");
         System.out.println(inicio.getFreq() + " es la frecuencia total sumada");
-        
+        Texto texto= new Texto();
         //codificacion de huffman
         arbol.codificar();
+        texto.comprimir(arbol);
     }
     
     //generacion de arbol desde nodo

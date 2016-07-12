@@ -17,6 +17,9 @@ public class ArbolCaracter {
         this.raiz = raiz;
     }
 
+    public ArbolCaracter() {
+    }
+    
     //ejecuta el recorrido del arbol y la busqueda del codigo
     public void codificar() {
         recorrerArbol(raiz, "");
@@ -37,7 +40,7 @@ public class ArbolCaracter {
         if (nodo.derecha != null) {
             if (nodo.derecha.caracter != null) {
                 //si la hoja es caracter, la guarda
-                listArbol.enqueue(new Caracter(codigo+"0",nodo.derecha.getCaracter().getCaracter(),nodo.derecha.getFreq()));
+                listArbol.enqueue(new Caracter(codigo+"1",nodo.derecha.getCaracter().getCaracter(),nodo.derecha.getFreq()));
                 System.out.println("Codigo: " + codigo+"1"
                         + " Palabra: " + nodo.derecha.caracter.getCaracter()
                         + " Frecuencia: " + nodo.derecha.getFreq());
