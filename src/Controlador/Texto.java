@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectointegrador3;
+package Controlador;
 
+import Caracteres.*;
+import Listas.ColaListaSimple;
 import java.util.ArrayList;
 
 /**
@@ -75,7 +77,7 @@ public class Texto {
     }
 
     public void comprimir(ArbolCaracter arbol) {
-        ColaListaSimple cola = arbol.listArbol;
+        ColaListaSimple cola = arbol.getColaCaracteres();
         while (!cola.isEmpty()) {
             compresion.add((Caracter) cola.dequeue());
         }

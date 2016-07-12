@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectointegrador3;
+package Caracteres;
+
+import Controlador.Texto;
 
 /**
  *
@@ -17,6 +19,7 @@ public class ListaCar {
     protected ArbolCaracter arbol;
 
     public ListaCar() {
+        
     }
 
     public boolean vacio() {
@@ -25,12 +28,10 @@ public class ListaCar {
     
     //inicializa la generacion de arboles y la codificacion de huffman
     public void superbolize() {
-        int cont = 0;
         
         //generando arbol desde nodos
         while (this.size > 1) {
             arbolize();
-            cont++;
         }
         
         //transferencia de nodo(s) a arbol
