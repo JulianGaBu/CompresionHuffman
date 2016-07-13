@@ -18,7 +18,11 @@ public class ListaCar {
     public ListaCar() {
     }
     
-    //inicializa la generacion de arboles y la codificacion de huffman
+    /**
+     * inicializa la generacion de arboles y la codificacion de huffman
+     * <p>
+     * genera los arboles dentro de la lista misma, con cada nodo siendo una raiz
+     */
     public void arbolize() {
         //generando arbol desde nodos
         while (this.size > 1) {
@@ -38,7 +42,10 @@ public class ListaCar {
         System.out.println(inicio.getFreq() + " es la frecuencia total sumada");
     }
     
-    //devuelve la raiz, que ya es el arbol
+    /**
+     * devuelve la raiz del arbol generado
+     * @return el inicio de la lista
+     */
     public NodoCar getArbolRaiz() {
         return inicio;
     }

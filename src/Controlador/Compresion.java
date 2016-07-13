@@ -31,11 +31,20 @@ public final class Compresion {
     ArbolCaracter arbol;
     Byte[] arrBytes;
 
+    /**
+     * Genera una nueva compresion desde el archivo especificado
+     * @param filepath ruta del archivo
+     */
     public Compresion(String filepath) {
         this.text = leerArchivo(filepath);
         this.arbol = crearArbol();
     }
 
+    /**
+     * Extrae el texto de un archivo txt
+     * @param filepath - la ruta del archivo txt
+     * @return El texto extraido del txt
+     */
     public String leerArchivo(String filepath) {
         Scanner fileIn;
         String linea;
@@ -53,6 +62,12 @@ public final class Compresion {
     }
 
 //Cuenta de frecuencias de cada caracter
+
+    /**
+     * Cuenta los caracteres del texto extraido.
+     * 
+     * @return Arreglo con cada caracter y su frecuencia
+     */
     public ArrayList<Caracter> contarCaracteres() {
         ArrayList<Caracter> caracteres = new ArrayList<>();
         Caracter caracter;
@@ -81,7 +96,11 @@ public final class Compresion {
     
 //generacion de arbol
     
-    //crea la lista de caracteres y lanza el generamiento de arboles
+    /**
+     * Crea la lista de NodoCaracteres y genera un arbol dentro de ella
+     * 
+     * @return el arbol generado desde la lista
+     */
     public ArbolCaracter crearArbol() {
         //cuenta los caracteres y los agrega a un ArrayList caracteres
         ArrayList<Caracter> caracteres = contarCaracteres();
@@ -93,19 +112,24 @@ public final class Compresion {
         }
         //...de la cual se genera el arbol
         listaCar.arbolize();
-        
         return new ArbolCaracter(listaCar.getArbolRaiz());
     }
-
+    
 //Compresion y conversion
     
-    //pasa el texto a codigo en un arraylist de strings
+    /**
+     * Obtiene los codigos desde el arbol huffman
+     * <p>
+     * Pasa el string de texto a un arreglo de codigos
+     * <p>
+     * Llama a convertirString() y convertiraBytes()
+     */
     public void comprimir() {
-        //va a guardar el texto codificado en un arraylist
-        ArrayList<String> textoCompreso = new ArrayList<>();
-        
         //extrae los codigos del arbol
         arbol.codificar();
+        
+        //va a guardar el texto codificado en un arraylist
+        ArrayList<String> textoCompreso = new ArrayList<>();
         
         ColaListaSimple cola = arbol.getColaCaracteres();
         while (!cola.isEmpty()) {
@@ -121,7 +145,11 @@ public final class Compresion {
         convertirString(textoCompreso);
     }
 
-    //convierte el arreglo de codigos en un solo string
+    /**
+     * Convierte el arreglo de codigos en un solo string
+     * @param textoCompreso arreglo de codigos. va a ser convertido a bytes con
+     * convertiraBytes()
+     */
     public void convertirString(ArrayList<String> textoCompreso) {
         String huffman = "";
         for (int i = 0; i < textoCompreso.size(); i++) {
@@ -130,7 +158,10 @@ public final class Compresion {
         convertiraBytes(huffman);
     }
 
-    //convierte el string en bytes
+    /**
+     * Convierte de String a arreglo de bytes
+     * @param huffman String a convertir
+     */
     public void convertiraBytes(String huffman) {
         convertidor = new Convert(huffman);
         convertidor.guarda_bin();
@@ -139,6 +170,9 @@ public final class Compresion {
         arrBytes = convertidor.getBytes();
     }
     
+    /**
+     * @return texto extraido del archivo
+     */
     public String getText(){
         return text;
     }

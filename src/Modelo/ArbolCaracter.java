@@ -20,12 +20,22 @@ public class ArbolCaracter {
     public ArbolCaracter() {
     }
     
-    //ejecuta el recorrido del arbol y la busqueda del codigo
+    /**
+     * Ejecuta el recorrido del arbol recorrerArbol() y busca el codigo
+     * 
+     */
     public void codificar() {
         recorrerArbol(raiz, "");
     }
     
-    //basdo en el recorrido original de Reyes(TM)
+    /**
+     * Recorre el arbol de izquierda a derecha
+     * y guarda los codigos en Caracteres con su frecuencia y caracter
+     * <p>
+     * basado en el recorrido original de Reyes(TM)
+     * @param nodo la raiz del arbol a recorrer
+     * @param codigo el codigo que se va acumulando al recorrer el arbol recursivamente
+     */
     public void recorrerArbol(NodoCar nodo, String codigo) {
         if (nodo.izquierda != null) {
             if (nodo.izquierda.caracter != null) {
@@ -43,6 +53,9 @@ public class ArbolCaracter {
         }
     }
     
+    /**
+     * @return la cola de Caracteres que contiene el codigo
+     */
     public ColaListaSimple getColaCaracteres(){
         return listCodigos;
     }

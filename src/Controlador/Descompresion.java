@@ -17,13 +17,24 @@ public class Descompresion {
     String binario;
     ArrayList<Caracter> codeList = new ArrayList<>();
 
+    /**
+     * Constructor de descompresion
+     * @param comp Objeto compresion del cual se va a descifrar
+     * <p>
+     * extrae el arreglo de bytes de comp
+     * genera un string desde el arreglo de bytes con Convert
+     */
     public Descompresion(Compresion comp) {
         this.arrBytes = comp.arrBytes;
         this.binario = comp.convertidor.lee_dec();
         this.codeList = comp.codeList;
     }
     
-    //descomprime los bytes en un string
+    /**
+     * Descomprime los bytes en un string
+     * <p>
+     * Utiliza el string obtenido desde el Convert heredado del objeto compresion
+     */
     public void descomprimir() {
         String substring = "";
         String decodificacion = "";
@@ -36,7 +47,6 @@ public class Descompresion {
                 }
             }
         }
-
         System.out.println(decodificacion);
     }
 }
