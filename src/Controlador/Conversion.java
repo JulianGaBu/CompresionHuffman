@@ -1,11 +1,11 @@
 package Controlador;
 
-public class Convert {
+public class Conversion {
 
     String sText;
     Byte[] bText; //almacena el arreglo de bytes
 
-    public Convert(String huffman) {
+    public Conversion(String huffman) {
         sText = huffman;
         // sText= "001010101011011010100110";
         //si el bit mas a la izq esta en 1 se toma como negativo

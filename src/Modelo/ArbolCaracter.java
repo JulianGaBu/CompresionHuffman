@@ -11,9 +11,9 @@ package Modelo;
  */
 public class ArbolCaracter {
     ColaListaSimple listCodigos = new ColaListaSimple();
-    protected NodoCar raiz;
+    protected NodoCaracter raiz;
 
-    public ArbolCaracter(NodoCar raiz) {
+    public ArbolCaracter(NodoCaracter raiz) {
         this.raiz = raiz;
     }
 
@@ -36,7 +36,7 @@ public class ArbolCaracter {
      * @param nodo la raiz del arbol a recorrer
      * @param codigo el codigo que se va acumulando al recorrer el arbol recursivamente
      */
-    public void recorrerArbol(NodoCar nodo, String codigo) {
+    public void recorrerArbol(NodoCaracter nodo, String codigo) {
         if (nodo.izquierda != null) {
             if (nodo.izquierda.caracter != null) {
                 //si la hoja es caracter, la guarda

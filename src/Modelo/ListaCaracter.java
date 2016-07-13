@@ -9,13 +9,13 @@ package Modelo;
  *
  * @author Julian
  */
-public class ListaCar {
+public class ListaCaracter {
 
-    protected NodoCar inicio;
-    protected NodoCar ultimo;
+    protected NodoCaracter inicio;
+    protected NodoCaracter ultimo;
     protected int size;
 
-    public ListaCar() {
+    public ListaCaracter() {
     }
     
     /**
@@ -26,14 +26,14 @@ public class ListaCar {
     public void arbolize() {
         //generando arbol desde nodos
         while (this.size > 1) {
-            NodoCar smallest, smaller, ncAux;
+            NodoCaracter smallest, smaller, ncAux;
             int aux;
-            smallest = new NodoCar(inicio);
-            smaller = new NodoCar(inicio.siguiente);
+            smallest = new NodoCaracter(inicio);
+            smaller = new NodoCaracter(inicio.siguiente);
             aux = smallest.getFreq() + smaller.getFreq();
             this.eliminaInicio();
             this.eliminaInicio();
-            ncAux = new NodoCar(aux, smallest, smaller);
+            ncAux = new NodoCaracter(aux, smallest, smaller);
             insertaOrdenado(ncAux);
         }
         
@@ -46,7 +46,7 @@ public class ListaCar {
      * devuelve la raiz del arbol generado
      * @return el inicio de la lista
      */
-    public NodoCar getArbolRaiz() {
+    public NodoCaracter getArbolRaiz() {
         return inicio;
     }
     
@@ -55,19 +55,19 @@ public class ListaCar {
         return inicio == null;
     }
     
-    public void insertaInicio(NodoCar dato) {
+    public void insertaInicio(NodoCaracter dato) {
         if (vacio()) {
-            inicio = ultimo = new NodoCar(dato);
+            inicio = ultimo = new NodoCaracter(dato);
             size++;
         } else {
-            inicio = new NodoCar(dato, inicio);
+            inicio = new NodoCaracter(dato, inicio);
             size++;
         }
     }
 
-    public void insertaOrdenado(NodoCar dato) {
+    public void insertaOrdenado(NodoCaracter dato) {
         if (vacio()) {
-            inicio = ultimo = new NodoCar(dato);
+            inicio = ultimo = new NodoCaracter(dato);
             size++;
         } else if (inicio == ultimo) {
             if (dato.getFreq() < inicio.getFreq()) {
@@ -77,7 +77,7 @@ public class ListaCar {
             }
         } else {
 
-            NodoCar antes = null, actual = inicio;
+            NodoCaracter antes = null, actual = inicio;
             while (actual != null && dato.getFreq() > actual.getFreq()) {
                 antes = actual;
                 actual = actual.siguiente;
@@ -87,27 +87,27 @@ public class ListaCar {
             } else if (actual == null) {
                 insertaFinal(dato);
             } else {
-                NodoCar nuevo = new NodoCar(dato, actual);
+                NodoCaracter nuevo = new NodoCaracter(dato, actual);
                 antes.setSiguiente(nuevo);
                 size++;
             }
         }
     }
 
-    public void insertaFinal(NodoCar dato) {
+    public void insertaFinal(NodoCaracter dato) {
         if (vacio()) {
-            inicio = ultimo = new NodoCar(dato);
+            inicio = ultimo = new NodoCaracter(dato);
             size++;
         } else {
-            NodoCar temp = new NodoCar(dato);
+            NodoCaracter temp = new NodoCaracter(dato);
             ultimo.setSiguiente(temp);
             ultimo = temp;
             size++;
         }
     }
 
-    public NodoCar eliminaInicio() {
-        NodoCar eliminado = null;
+    public NodoCaracter eliminaInicio() {
+        NodoCaracter eliminado = null;
         if (vacio()) {
             System.out.println("Lista vacia");
         } else {

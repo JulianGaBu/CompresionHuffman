@@ -9,19 +9,19 @@ package Modelo;
  *
  * @author Julian
  */
-public class NodoCar {
+public class NodoCaracter {
 
     protected int freq;
-    protected NodoCar siguiente;
-    protected NodoCar izquierda, derecha;
+    protected NodoCaracter siguiente;
+    protected NodoCaracter izquierda, derecha;
     protected Caracter caracter;
 
-    public NodoCar() {
+    public NodoCaracter() {
     }
 
 //Constructores de Clonacion
     
-    public NodoCar(NodoCar nc) {
+    public NodoCaracter(NodoCaracter nc) {
         this.siguiente = nc.siguiente;
         this.izquierda = nc.izquierda;
         this.derecha = nc.derecha;
@@ -29,7 +29,7 @@ public class NodoCar {
         this.freq = nc.freq;
     }
 
-    public NodoCar(NodoCar nc, NodoCar siguiente) {
+    public NodoCaracter(NodoCaracter nc, NodoCaracter siguiente) {
         this.izquierda = nc.izquierda;
         this.derecha = nc.derecha;
         this.caracter = nc.caracter;
@@ -39,14 +39,14 @@ public class NodoCar {
 
 //Constructores de Lista Simple
     //solo caracter. genera frecuencia
-    public NodoCar(Caracter caracter) {
+    public NodoCaracter(Caracter caracter) {
         this.caracter = caracter;
         this.freq = caracter.getFrecuencias();
     }
 
 //Constructores de Arbol
     //freq, izquierda, derecha
-    public NodoCar(int freq, NodoCar izquierda, NodoCar derecha) {
+    public NodoCaracter(int freq, NodoCaracter izquierda, NodoCaracter derecha) {
         this.freq = freq;
         this.izquierda = izquierda;
         this.derecha = derecha;
@@ -60,27 +60,27 @@ public class NodoCar {
         return freq;
     }
 
-    public NodoCar getSiguiente() {
+    public NodoCaracter getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoCar siguiente) {
+    public void setSiguiente(NodoCaracter siguiente) {
         this.siguiente = siguiente;
     }
 
-    public NodoCar getIzquierda() {
+    public NodoCaracter getIzquierda() {
         return izquierda;
     }
 
-    public void setIzquierda(NodoCar izquierda) {
+    public void setIzquierda(NodoCaracter izquierda) {
         this.izquierda = izquierda;
     }
 
-    public NodoCar getDerecha() {
+    public NodoCaracter getDerecha() {
         return derecha;
     }
 
-    public void setDerecha(NodoCar derecha) {
+    public void setDerecha(NodoCaracter derecha) {
         this.derecha = derecha;
     }
 }

@@ -6,8 +6,8 @@
 package Controlador;
 
 import Modelo.ArbolCaracter;
-import Modelo.NodoCar;
-import Modelo.ListaCar;
+import Modelo.NodoCaracter;
+import Modelo.ListaCaracter;
 import Modelo.Caracter;
 import Modelo.ColaListaSimple;
 import java.io.FileNotFoundException;
@@ -27,7 +27,7 @@ public final class Compresion {
     //arraylist de codigos con su respectivo caracter
     ArrayList<Caracter> codeList = new ArrayList<>();
     
-    Convert convertidor;
+    Conversion convertidor;
     ArbolCaracter arbol;
     Byte[] arrBytes;
 
@@ -105,10 +105,10 @@ public final class Compresion {
         //cuenta los caracteres y los agrega a un ArrayList caracteres
         ArrayList<Caracter> caracteres = contarCaracteres();
         
-        //Se crea una ListaCar con cada uno de los Caracteres nodos...
-        ListaCar listaCar = new ListaCar();
+        //Se crea una ListaCaracter con cada uno de los Caracteres nodos...
+        ListaCaracter listaCar = new ListaCaracter();
         for (int i = 0; i < caracteres.size(); i++) {
-            listaCar.insertaOrdenado(new NodoCar((Caracter) caracteres.get(i)));
+            listaCar.insertaOrdenado(new NodoCaracter((Caracter) caracteres.get(i)));
         }
         //...de la cual se genera el arbol
         listaCar.arbolize();
@@ -163,7 +163,7 @@ public final class Compresion {
      * @param huffman String a convertir
      */
     public void convertiraBytes(String huffman) {
-        convertidor = new Convert(huffman);
+        convertidor = new Conversion(huffman);
         convertidor.guarda_bin();
         
         //obtiene el arreglo de bytes y el string que extrae
