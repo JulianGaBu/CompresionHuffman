@@ -25,6 +25,10 @@ public class ListaCar {
     public boolean vacio() {
         return inicio == null;
     }
+
+    public ArbolCaracter getArbol() {
+        return arbol;
+    }
     
     //inicializa la generacion de arboles y la codificacion de huffman
     public void superbolize() {
@@ -40,6 +44,7 @@ public class ListaCar {
         System.out.println(inicio.getFreq() + " es la frecuencia total sumada");
         Texto texto= new Texto();
         //codificacion de huffman
+        System.out.println("codificar");
         arbol.codificar();
         texto.comprimir(arbol);
     }
