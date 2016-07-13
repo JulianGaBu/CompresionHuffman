@@ -36,7 +36,6 @@ public class ListaCar {
         
         //transferencia de nodo(s) a arbol
         arbol = new ArbolCaracter(inicio);
-//        System.out.println(cont); //NODOS
         System.out.println("Arbol generado");
         System.out.println(inicio.getFreq() + " es la frecuencia total sumada");
         Texto texto= new Texto();
