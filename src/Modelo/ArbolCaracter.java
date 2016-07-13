@@ -14,14 +14,16 @@ import java.util.ArrayList;
 public class ArbolCaracter {
     private final ArrayList<Caracter> codeList = new ArrayList<>();
     private ListaCaracter listaCar;
-    private NodoCaracter raiz;
+    private final NodoCaracter raiz;
 
     public ArbolCaracter(NodoCaracter raiz) {
         this.raiz = raiz;
     }
 
     public ArbolCaracter(ArrayList<Caracter> caracteres) {
+        //instancia un nuevo listacar, que va a guardar los caracteres ordenados
         listaCar = new ListaCaracter(caracteres);
+        //genera el arbol y lo transfiere a este objeto
         listaCar.arbolize();
         this.raiz = listaCar.getArbolRaiz();
     }

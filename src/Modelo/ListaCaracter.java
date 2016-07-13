@@ -18,6 +18,7 @@ public final class ListaCaracter {
     protected int size;
 
     public ListaCaracter(ArrayList<Caracter> caracteres) {
+        //llena la lista con los caracteres
         this.enlistar(caracteres);
     }
     
