@@ -13,12 +13,10 @@ public class Convert {
         bText = new Byte[cant]; //almacena el arreglo de bytes
 
     }
-//recibe una cadena con una secuencia binaria y lo convierte a arreglo de bytes
-//con los valores convertidos a enteros tomando de 8 en 8 bits
 
+    //recibe una cadena con una secuencia binaria y lo convierte a arreglo de bytes
+    //con los valores convertidos a enteros tomando de 8 en 8 bits
     public void guarda_bin() {
-        System.out.println("Longitud del string: " + sText.length());
-        System.out.println("Secuencia binaria:");
         int nIter = 0, cuenta = 0;
         String subcadena;
         do {
@@ -31,8 +29,7 @@ public class Convert {
                 }
                 subcadena += "0"; //completar ceros faltantes
             }
-            //System.out.println(subcadena);
-//Convert ascii to Int
+            //Convert ascii to Int
             Byte decimal = (byte) Integer.parseInt(subcadena, 2);
             //System.out.println(decimal); //se imprime con el signo, no importa
             bText[cuenta++] = decimal;
@@ -40,8 +37,8 @@ public class Convert {
             nIter += 8;
         } while (nIter < sText.length());
     }
-//lee el arreglo decimal y lo convierte a string (como secuencia de bits)
 
+    //lee el arreglo decimal y lo convierte a string (como secuencia de bits)
     public String lee_dec() {
         String resultado = "";
         String aCadenaBinario = "";
@@ -110,4 +107,7 @@ public class Convert {
 
     }
 
+    public Byte[] getBytes() {
+        return bText;
+    }
 }

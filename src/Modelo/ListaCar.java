@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Caracteres;
-
-import Controlador.Texto;
+package Modelo;
 
 /**
  *
@@ -16,52 +14,40 @@ public class ListaCar {
     protected NodoCar inicio;
     protected NodoCar ultimo;
     protected int size;
-    protected ArbolCaracter arbol;
 
     public ListaCar() {
-        
-    }
-
-    public boolean vacio() {
-        return inicio == null;
-    }
-
-    public ArbolCaracter getArbol() {
-        return arbol;
     }
     
     //inicializa la generacion de arboles y la codificacion de huffman
-    public void superbolize() {
-        
+    public void arbolize() {
         //generando arbol desde nodos
         while (this.size > 1) {
-            arbolize();
+            NodoCar smallest, smaller, ncAux;
+            int aux;
+            smallest = new NodoCar(inicio);
+            smaller = new NodoCar(inicio.siguiente);
+            aux = smallest.getFreq() + smaller.getFreq();
+            this.eliminaInicio();
+            this.eliminaInicio();
+            ncAux = new NodoCar(aux, smallest, smaller);
+            insertaOrdenado(ncAux);
         }
         
         //transferencia de nodo(s) a arbol
-        arbol = new ArbolCaracter(inicio);
         System.out.println("Arbol generado");
         System.out.println(inicio.getFreq() + " es la frecuencia total sumada");
-        Texto texto= new Texto();
-        //codificacion de huffman
-        System.out.println("codificar");
-        arbol.codificar();
-        texto.comprimir(arbol);
     }
     
-    //generacion de arbol desde nodo
-    public void arbolize() {
-        NodoCar smallest, smaller, ncAux;
-        int aux;
-        smallest = new NodoCar(inicio);
-        smaller = new NodoCar(inicio.siguiente);
-        aux = smallest.getFreq() + smaller.getFreq();
-        this.eliminaInicio();
-        this.eliminaInicio();
-        ncAux = new NodoCar(aux, smallest, smaller);
-        insertaOrdenado(ncAux);
+    //devuelve la raiz, que ya es el arbol
+    public NodoCar getArbolRaiz() {
+        return inicio;
     }
-
+    
+//Inserciones a la lista
+    public boolean vacio() {
+        return inicio == null;
+    }
+    
     public void insertaInicio(NodoCar dato) {
         if (vacio()) {
             inicio = ultimo = new NodoCar(dato);
