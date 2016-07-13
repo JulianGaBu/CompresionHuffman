@@ -5,17 +5,27 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Julian
  */
-public class ListaCaracter {
+public final class ListaCaracter {
 
-    protected NodoCaracter inicio;
-    protected NodoCaracter ultimo;
+    private NodoCaracter inicio;
+    private NodoCaracter ultimo;
     protected int size;
 
-    public ListaCaracter() {
+    public ListaCaracter(ArrayList<Caracter> caracteres) {
+        this.enlistar(caracteres);
+    }
+    
+    //convierte de arraylist de Caracteres a ListaCaracteres
+    private void enlistar(ArrayList<Caracter> caracteres){
+        for (int i = 0; i < caracteres.size(); i++) {
+            insertaOrdenado(new NodoCaracter((Caracter) caracteres.get(i)));
+        }
     }
     
     /**

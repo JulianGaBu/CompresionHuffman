@@ -21,8 +21,8 @@ public class Descompresion {
      * Constructor de descompresion
      * @param comp Objeto compresion del cual se va a descifrar
      * <p>
- extrae el arreglo de bytes de comp
- genera un string desde el arreglo de bytes con Conversion
+     * extrae el arreglo de bytes de comp
+     * genera un string desde el arreglo de bytes con Conversion
      */
     public Descompresion(Compresion comp) {
         this.arrBytes = comp.arrBytes;
@@ -33,7 +33,7 @@ public class Descompresion {
     /**
      * Descomprime los bytes en un string
      * <p>
- Utiliza el string obtenido desde el Conversion heredado del objeto compresion
+     * Utiliza el string obtenido desde el Conversion heredado del objeto compresion
      */
     public void descomprimir() {
         String substring = "";

@@ -5,24 +5,29 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Julian
  */
 public class ArbolCaracter {
-    ColaListaSimple listCodigos = new ColaListaSimple();
-    protected NodoCaracter raiz;
+    private final ArrayList<Caracter> codeList = new ArrayList<>();
+    private ListaCaracter listaCar;
+    private NodoCaracter raiz;
 
     public ArbolCaracter(NodoCaracter raiz) {
         this.raiz = raiz;
     }
 
-    public ArbolCaracter() {
+    public ArbolCaracter(ArrayList<Caracter> caracteres) {
+        listaCar = new ListaCaracter(caracteres);
+        listaCar.arbolize();
+        this.raiz = listaCar.getArbolRaiz();
     }
     
     /**
      * Ejecuta el recorrido del arbol recorrerArbol() y busca el codigo
-     * 
      */
     public void codificar() {
         recorrerArbol(raiz, "");
@@ -40,14 +45,14 @@ public class ArbolCaracter {
         if (nodo.izquierda != null) {
             if (nodo.izquierda.caracter != null) {
                 //si la hoja es caracter, la guarda
-                listCodigos.enqueue(new Caracter(codigo+"0",nodo.izquierda.getCaracter().getCaracter(),nodo.izquierda.getFreq()));
+                codeList.add(new Caracter(codigo+"0",nodo.izquierda.getCaracter().getCaracter(),nodo.izquierda.getFreq()));
             }
             recorrerArbol(nodo.izquierda, codigo+"0");
         }
         if (nodo.derecha != null) {
             if (nodo.derecha.caracter != null) {
                 //si la hoja es caracter, la guarda
-                listCodigos.enqueue(new Caracter(codigo+"1",nodo.derecha.getCaracter().getCaracter(),nodo.derecha.getFreq()));
+                codeList.add(new Caracter(codigo+"1",nodo.derecha.getCaracter().getCaracter(),nodo.derecha.getFreq()));
             }
             recorrerArbol(nodo.derecha, codigo+"1");
         }
@@ -56,8 +61,8 @@ public class ArbolCaracter {
     /**
      * @return la cola de Caracteres que contiene el codigo
      */
-    public ColaListaSimple getColaCaracteres(){
-        return listCodigos;
+    public ArrayList<Caracter> getCodigos(){
+        return codeList;
     }
     
     

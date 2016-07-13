@@ -10,7 +10,7 @@ package Modelo;
  *
  * @author rodrigopeniche
  */
-public class ColaListaSimple implements Queue{
+public class ColaListaSimple{
     
     protected ListaSimple queuelista;
     protected int cont;
@@ -18,13 +18,11 @@ public class ColaListaSimple implements Queue{
         queuelista = new ListaSimple();
     }
 
-    @Override
     public void enqueue(Object dato) {
         queuelista.insertaFinal(dato);
         cont++;
     }
 
-    @Override
     public Object dequeue() {
              Object eliminado;
         eliminado = queuelista.eliminaInicio();
@@ -35,12 +33,10 @@ public class ColaListaSimple implements Queue{
         return eliminado;
     }
 
-    @Override
     public int size() {
        return cont;
     }
 
-    @Override
     public Object front() {
          Object frente = queuelista.getInicio();
         if(frente != null){
@@ -49,7 +45,6 @@ public class ColaListaSimple implements Queue{
         return frente;
     }
 
-    @Override
     public boolean isEmpty() {
         return queuelista.vacio();
     }

@@ -11,7 +11,7 @@ package Modelo;
  */
 public class NodoCaracter {
 
-    protected int freq;
+    private int freq;
     protected NodoCaracter siguiente;
     protected NodoCaracter izquierda, derecha;
     protected Caracter caracter;
