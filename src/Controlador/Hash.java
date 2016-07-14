@@ -6,6 +6,7 @@
 package Controlador;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,7 +22,7 @@ public final class Hash {
         this.indice = Math.abs(filename.hashCode()%100);
         System.out.println(indice);
         HASHTABLE[indice] = filepath;
-        Hash.fileNames.add(filename);
+        Hash.fileNames.add(filename);        
     }
     
     public String extractFileName(String filepath){
@@ -41,4 +42,9 @@ public final class Hash {
             return HASHTABLE[indice];
     }
     
+    public static  ArrayList<String> getFileNames(){
+        return fileNames;
+    }
+    
+            
 }

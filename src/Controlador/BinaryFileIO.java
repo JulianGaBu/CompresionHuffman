@@ -26,6 +26,7 @@ import java.util.StringTokenizer;
  * @author Julian
  */
 public class BinaryFileIO {
+
     private static ArrayList<Caracter> codeList;
 
     public static void guardarArchivo(String filepath, Byte[] arrBytes, ArrayList<Caracter> codigos) throws IOException {
@@ -40,16 +41,16 @@ public class BinaryFileIO {
         } catch (Exception e) {
             System.out.println("Error fatal");
         }
-        appendTable(codigos,filepath);
+        appendTable(codigos, filepath);
         Hash hash = new Hash(filepath);
     }
-    
-    public static void appendTable(ArrayList<Caracter> codigos,String filepath) throws IOException{
+
+    public static void appendTable(ArrayList<Caracter> codigos, String filepath) throws IOException {
         PrintWriter fileOut = new PrintWriter(new FileWriter(filepath, true));
         fileOut.println(" ");
         fileOut.println("cdg");
-        for(int i = 0; i<codigos.size();i++){
-            fileOut.println(" "+codigos.get(i).getCaracter()+" "+codigos.get(i).getCodigo());
+        for (int i = 0; i < codigos.size(); i++) {
+            fileOut.println(" " + codigos.get(i).getCaracter() + " " + codigos.get(i).getCodigo());
         }
         fileOut.close();
     }
@@ -79,46 +80,40 @@ public class BinaryFileIO {
         Scanner fileIn;
         StringTokenizer st;
         Caracter car;
-        boolean band= false;
-        
-        try{
-            fileIn= new Scanner(new FileReader(filepath));
-            while(fileIn.hasNextLine())
-            {
-                car= new Caracter();
+        boolean band = false;
+
+        try {
+            fileIn = new Scanner(new FileReader(filepath));
+            while (fileIn.hasNextLine()) {
+                car = new Caracter();
                 if (band == false) {
-                    linea= fileIn.nextLine();
+                    linea = fileIn.nextLine();
                     while (!linea.equals("cdg")) {
                         linea = fileIn.nextLine();
                     }
-                    band= true;
+                    band = true;
                 }
-                linea= fileIn.nextLine();
-                st= new StringTokenizer(linea);
-                if(st.countTokens()<2){
+                linea = fileIn.nextLine();
+                st = new StringTokenizer(linea);
+                if (st.countTokens() < 2) {
                     car.setCaracter(' ');
                     car.setCodigo(st.nextToken());
-                }else{
+                } else {
                     car.setCaracter(st.nextToken().charAt(0));
                     car.setCodigo(st.nextToken());
                 }
                 codeList.add(car);
                 System.out.println(car.getCaracter() + " " + car.getCodigo());
             }
-        }
-        catch(FileNotFoundException ex)
-        {
+        } catch (FileNotFoundException ex) {
             System.out.println("Archivo no encontrado");
         }
-       
-        
+
         return datos;
     }
-    
-    public static ArrayList<Caracter> getCodeList()
-    {
+
+    public static ArrayList<Caracter> getCodeList() {
         return codeList;
     }
 
-    
 }

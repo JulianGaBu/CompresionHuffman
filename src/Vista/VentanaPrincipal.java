@@ -91,21 +91,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void descomprimiritemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descomprimiritemActionPerformed
-        try {
-            // TODO add your handling code here:
-            Descompresion descomp2 = new Descompresion("reyes.txt");
-            Descompresion descomp = new Descompresion("clinton.txt");
-            descomp.descomprimir();
-            descomp2.descomprimir();
-        } catch (IOException ex) {
-            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         new VentanaDescompresion().setVisible(true);
     }//GEN-LAST:event_descomprimiritemActionPerformed
 
     private void comprimiritemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprimiritemActionPerformed
         // TODO add your handling code here:
-//       Compresion compresion= new Compresion();
-//       comp.add(compresion);
        new VentanaCompresion().setVisible(true);
         
     }//GEN-LAST:event_comprimiritemActionPerformed

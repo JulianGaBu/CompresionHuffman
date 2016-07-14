@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class Descompresion {
     String binario;
+    String texto;
     ArrayList<Caracter> codeList = new ArrayList<>();
 
     /**
@@ -46,6 +47,10 @@ public class Descompresion {
                 }
             }
         }
-        System.out.println(decodificacion);
+        texto = decodificacion;
+    }
+
+    public String getTexto() {
+        return texto;
     }
 }
