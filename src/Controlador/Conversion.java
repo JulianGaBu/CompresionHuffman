@@ -38,8 +38,7 @@ public class Conversion {
     }
 
     //lee el arreglo decimal y lo convierte a string (como secuencia de bits)
-    public String lee_dec(Byte[] bin) {
-        bText = bin;
+    public static String lee_dec(Byte[] bText) {
         String resultado = "";
         String aCadenaBinario = "";
         String subcadena = "";
@@ -58,49 +57,48 @@ public class Conversion {
             }
         }
 
-        if (sText.length() % 8 != 0) {
-            String lastoriginal;
-            String firstresultado;
-            switch (sText.length() % 8) {
-                case 1:
-                    lastoriginal = sText.substring(sText.length() - 2, sText.length());
-                    firstresultado = resultado.substring(0, resultado.length() - 9);
-                    resultado = firstresultado.concat(lastoriginal);
-                    break;
-                case 2:
-                    lastoriginal = sText.substring(sText.length() - 2, sText.length());
-                    firstresultado = resultado.substring(0, resultado.length() - 8);
-                    resultado = firstresultado.concat(lastoriginal);
-                    break;
-                case 3:
-                    lastoriginal = sText.substring(sText.length() - 3, sText.length());
-                    firstresultado = resultado.substring(0, resultado.length() - 8);
-                    resultado = firstresultado.concat(lastoriginal);
-                    break;
-                case 4:
-                    lastoriginal = sText.substring(sText.length() - 4, sText.length());
-                    firstresultado = resultado.substring(0, resultado.length() - 8);
-                    resultado = firstresultado.concat(lastoriginal);
-                    break;
-                case 5:
-                    lastoriginal = sText.substring(sText.length() - 6, sText.length());
-                    firstresultado = resultado.substring(0, resultado.length() - 9);
-                    resultado = firstresultado.concat(lastoriginal);
-                    break;
-                case 6:
-                    lastoriginal = sText.substring(sText.length() - 7, sText.length());
-                    firstresultado = resultado.substring(0, resultado.length() - 9);
-                    resultado = firstresultado.concat(lastoriginal);
-                    break;
-                case 7:
-                    lastoriginal = sText.substring(sText.length() - 1, sText.length());
-                    firstresultado = resultado.substring(0, resultado.length() - 2);
-                    resultado = firstresultado.concat(lastoriginal);
-                    break;
-            }
-        }
+//        if (sText.length() % 8 != 0) {
+//            String lastoriginal;
+//            String firstresultado;
+//            switch (sText.length() % 8) {
+//                case 1:
+//                    lastoriginal = sText.substring(sText.length() - 2, sText.length());
+//                    firstresultado = resultado.substring(0, resultado.length() - 9);
+//                    resultado = firstresultado.concat(lastoriginal);
+//                    break;
+//                case 2:
+//                    lastoriginal = sText.substring(sText.length() - 2, sText.length());
+//                    firstresultado = resultado.substring(0, resultado.length() - 8);
+//                    resultado = firstresultado.concat(lastoriginal);
+//                    break;
+//                case 3:
+//                    lastoriginal = sText.substring(sText.length() - 3, sText.length());
+//                    firstresultado = resultado.substring(0, resultado.length() - 8);
+//                    resultado = firstresultado.concat(lastoriginal);
+//                    break;
+//                case 4:
+//                    lastoriginal = sText.substring(sText.length() - 4, sText.length());
+//                    firstresultado = resultado.substring(0, resultado.length() - 8);
+//                    resultado = firstresultado.concat(lastoriginal);
+//                    break;
+//                case 5:
+//                    lastoriginal = sText.substring(sText.length() - 6, sText.length());
+//                    firstresultado = resultado.substring(0, resultado.length() - 9);
+//                    resultado = firstresultado.concat(lastoriginal);
+//                    break;
+//                case 6:
+//                    lastoriginal = sText.substring(sText.length() - 7, sText.length());
+//                    firstresultado = resultado.substring(0, resultado.length() - 9);
+//                    resultado = firstresultado.concat(lastoriginal);
+//                    break;
+//                case 7:
+//                    lastoriginal = sText.substring(sText.length() - 1, sText.length());
+//                    firstresultado = resultado.substring(0, resultado.length() - 2);
+//                    resultado = firstresultado.concat(lastoriginal);
+//                    break;
+//            }
+//        }
 
-        System.out.println("Original:   " + sText);
         System.out.println("Codificado: " + resultado);
 
         return resultado;

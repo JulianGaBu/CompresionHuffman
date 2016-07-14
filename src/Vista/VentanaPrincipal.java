@@ -7,7 +7,10 @@ package Vista;
 
 import Controlador.Compresion;
 import Controlador.Descompresion;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -88,7 +91,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void descomprimiritemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descomprimiritemActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            Descompresion descomp2 = new Descompresion("reyes.txt");
+            Descompresion descomp = new Descompresion("clinton.txt");
+            descomp.descomprimir();
+            descomp2.descomprimir();
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_descomprimiritemActionPerformed
 
     private void comprimiritemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprimiritemActionPerformed

@@ -14,21 +14,19 @@ import java.util.ArrayList;
  * @author Julian
  */
 public class Descompresion {
-    Byte[] arrBytes;
     String binario;
     ArrayList<Caracter> codeList = new ArrayList<>();
 
     /**
      * Constructor de descompresion
-     * @param comp Objeto compresion del cual se va a descifrar
+     * @param filepath ruta del archivo
      * <p>
      * extrae el arreglo de bytes de comp
      * genera un string desde el arreglo de bytes con Conversion
      */
-    public Descompresion(Compresion comp) throws IOException {
-        this.arrBytes = comp.arrBytes;
-        this.binario = comp.convertidor.lee_dec(BinaryFileIO.leerArchivo("copter.txt"));
-        this.codeList = comp.codeList;
+    public Descompresion(String filepath) throws IOException {
+        this.binario = Conversion.lee_dec(BinaryFileIO.leerArchivo(filepath));
+        this.codeList = BinaryFileIO.getCodeList();
     }
     
     /**
