@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.Caracter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -24,9 +25,9 @@ public class Descompresion {
      * extrae el arreglo de bytes de comp
      * genera un string desde el arreglo de bytes con Conversion
      */
-    public Descompresion(Compresion comp) {
+    public Descompresion(Compresion comp) throws IOException {
         this.arrBytes = comp.arrBytes;
-        this.binario = comp.convertidor.lee_dec();
+        this.binario = comp.convertidor.lee_dec(BinaryFileIO.leerArchivo("copter.txt"));
         this.codeList = comp.codeList;
     }
     

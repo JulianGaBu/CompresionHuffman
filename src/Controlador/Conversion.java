@@ -11,9 +11,8 @@ public class Conversion {
         //si el bit mas a la izq esta en 1 se toma como negativo
         int cant = (sText.length() % 8 == 0) ? (sText.length() / 8) : (sText.length() / 8 + 1);
         bText = new Byte[cant]; //almacena el arreglo de bytes
-
     }
-
+ 
     //recibe una cadena con una secuencia binaria y lo convierte a arreglo de bytes
     //con los valores convertidos a enteros tomando de 8 en 8 bits
     public void guarda_bin() {
@@ -39,7 +38,8 @@ public class Conversion {
     }
 
     //lee el arreglo decimal y lo convierte a string (como secuencia de bits)
-    public String lee_dec() {
+    public String lee_dec(Byte[] bin) {
+        bText = bin;
         String resultado = "";
         String aCadenaBinario = "";
         String subcadena = "";

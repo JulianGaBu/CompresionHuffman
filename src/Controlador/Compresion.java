@@ -8,6 +8,9 @@ package Controlador;
 import Modelo.ArbolCaracter;
 import Modelo.Caracter;
 import Modelo.Texto;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -30,6 +33,13 @@ public final class Compresion {
         //se extrae el texto del archivo
         this.texto = new Texto(filepath);
         //se genera el arbol y se extraen sus codigos
+        this.arbol = new ArbolCaracter(texto.getCaracteres());
+        arbol.codificar();
+        this.codeList = arbol.getCodigos();
+    }
+    
+    public Compresion(File file){
+        this.texto = new Texto(file.getAbsolutePath());
         this.arbol = new ArbolCaracter(texto.getCaracteres());
         arbol.codificar();
         this.codeList = arbol.getCodigos();
@@ -78,6 +88,14 @@ public final class Compresion {
         arrBytes = convertidor.getBytes();
     }
     
+    public void guardarArchivo(String filepath) throws IOException {
+        BinaryFileIO.guardarArchivo(filepath, arrBytes,codeList);
+        BinaryFileIO.saveHistory(filepath);
+    }
+    
+    public ArrayList<Caracter> getCodigo(){
+        return codeList;
+    }
     /**
      * @return texto extraido del archivo
      */
