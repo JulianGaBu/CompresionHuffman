@@ -6,13 +6,18 @@
 package Controlador;
 
 import Modelo.Caracter;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,6 +40,7 @@ public class BinaryFileIO {
             for (int i = 0; i < arrBytes.length; i++) {
                 bytearray[i] = arrBytes[i];
             }
+
             try (FileOutputStream fileOuputStream = new FileOutputStream(filepath)) {
                 fileOuputStream.write(bytearray);
             }
@@ -67,6 +73,23 @@ public class BinaryFileIO {
         System.out.println("\n" + filename);
         fileOut.println(filename + " " + filepath);
         fileOut.close();
+    }
+    
+    public void lol() throws UnsupportedEncodingException, FileNotFoundException, IOException{
+        File file = new File("/path/to/file.txt");
+        File temp = File.createTempFile("file", ".txt", file.getParentFile());
+        String charset = "UTF-8";
+        String delete = "foo";
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), charset));
+        PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(temp), charset));
+        for (String line; (line = reader.readLine()) != null;) {
+            line = line.replace(delete, "");
+            writer.println(line);
+        }
+        reader.close();
+        writer.close();
+        file.delete();
+        temp.renameTo(file);
     }
 
     public static Byte[] leerArchivo(String filepath) throws IOException {
